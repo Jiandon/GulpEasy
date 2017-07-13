@@ -10,12 +10,12 @@ var plugins = require('gulp-load-plugins')();
 
 // js文件的处理的操作
 gulp.task('js',function () {
-    gulp.src('font/js/*.js')
+    gulp.src('front/js/*.js')
         .pipe(plugins.jshint())
         .pipe(plugins.jshint.reporter())
         .pipe(plugins.concat('all.js'))
         .pipe(plugins.uglify())
-        .pipe(gulp.dest('dist/font/js'))
+        .pipe(gulp.dest('dist/front/js'))
         .pipe(reload({
             stream: true
         }));
@@ -23,9 +23,9 @@ gulp.task('js',function () {
 
 // css文件的处理
 gulp.task('css',function () {
-    gulp.src('font/style/*.css')
+    gulp.src('front/style/*.css')
         .pipe(plugins.minifyCss())
-        .pipe(gulp.dest('dist/font/css'))
+        .pipe(gulp.dest('dist/front/css'))
         .pipe(reload({
           stream: true
         }));
@@ -33,19 +33,19 @@ gulp.task('css',function () {
 
 // 编译less和sass
 gulp.task('less',function () {
-   gulp.src('font/style/*.less')
+   gulp.src('front/style/*.less')
        .pipe(plugins.less())
        .pipe(plugins.minifyCss())
-       .pipe(gulp.dest('dist/font/css'))
+       .pipe(gulp.dest('dist/front/css'))
         .pipe(reload({
             stream: true
         }));
 });
 gulp.task('sass',function () {
-    gulp.src('font/style/*sass')
+    gulp.src('front/style/*sass')
         .pipe(plugins.sass())
         .pipe(plugins.minifyCss())
-        .pipe(gulp.dest('dist/font/css'))
+        .pipe(gulp.dest('dist/front/css'))
         .pipe(reload({
             stream: true
         }));
@@ -53,9 +53,9 @@ gulp.task('sass',function () {
 
 // html文件的处理
 gulp.task('html',function () {
-    gulp.src('font/*.html')
+    gulp.src('front/*.html')
         .pipe(plugins.minifyHtml())
-        .pipe(gulp.dest('dist/font'))
+        .pipe(gulp.dest('dist/front'))
         .pipe(reload({
             stream: true
         }));
@@ -63,8 +63,8 @@ gulp.task('html',function () {
 
 // 图片的处理
 gulp.task('images',function () {
-    gulp.src('font/img/*.*')
-        .pipe(gulp.dest('dist/font/img'))
+    gulp.src('front/img/*.*')
+        .pipe(gulp.dest('dist/front/img'))
         .pipe(reload({
             stream: true
         }));
@@ -84,11 +84,11 @@ gulp.task("serve",function () {
     });
 
     // watch检测文件的比变化
-    gulp.watch("font/style/*.less",['less']);
-    gulp.watch("font/style/*.sass",['sass']);
-    gulp.watch("font/style/*.css",['css']);
-    gulp.watch("font/js/*.js",['js']);
-    gulp.watch("font/img/*.*",['images']);
-    gulp.watch("font/*.html",['html']);
+    gulp.watch("front/style/*.less",['less']);
+    gulp.watch("front/style/*.sass",['sass']);
+    gulp.watch("front/style/*.css",['css']);
+    gulp.watch("front/js/*.js",['js']);
+    gulp.watch("front/img/*.*",['images']);
+    gulp.watch("front/*.html",['html']);
 });
 
